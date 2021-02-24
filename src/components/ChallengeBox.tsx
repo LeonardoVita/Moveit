@@ -1,15 +1,21 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { ChallengesContext } from "../contexts/ChallengesContext";
+
 import styles from "../styles/components/ChallengeBox.module.css"
 
 export default function ChallengeBox() {
 
-  const [hasActiveChalleng, setHasActiveChalleng] = useState(true);
+  const contextData = useContext(ChallengesContext);
+
+  console.log(contextData);
+
+  const [hasActiveChallenge, setHasActiveChallenge] = useState(true);
   
 
   return (
     <div className={styles["challengebox-container"]}>
       {
-        hasActiveChalleng ? (
+        hasActiveChallenge ? (
           <div className={styles["challenge-active"]}>
             <header>Ganhe 400 xp</header> 
             <main>
@@ -33,7 +39,7 @@ export default function ChallengeBox() {
               >
                 Completei
               </button> 
-                   
+
             </footer>  
           </div>  
         ) : (
