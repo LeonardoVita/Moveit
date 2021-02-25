@@ -12,6 +12,8 @@ helping devs to stay healthy with periodic exercise
  <img src="https://img.shields.io/badge/Reactjs-100%25-informational" alt="reactjs 100%"/>
 </p>
 
+![image](https://user-images.githubusercontent.com/43863949/109092460-529cb980-76f5-11eb-926e-f41177a8a273.png)
+
 This is a [Next.js](https://nextjs.org/) project
 
 ## Getting Started
