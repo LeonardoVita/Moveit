@@ -28,4 +28,15 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## :rocket: Technologies
+
+ This project was developed with the following technologies:
+
+-  [Reactjs](https://reactjs.org)
+-  [Typescript](https://www.typescriptlang.org)
+-  [Next.js](https://nextjs.org) 
+-  [Context Api](https://pt-br.reactjs.org/docs/context.html) 
+  
+
+
 
