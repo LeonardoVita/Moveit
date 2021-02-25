@@ -37,6 +37,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -  [Next.js](https://nextjs.org) 
 -  [Context Api](https://pt-br.reactjs.org/docs/context.html) 
   
-
+## :memo: License
+This is a Rocketseat Next Level Weak (NLW) project 
 
 
