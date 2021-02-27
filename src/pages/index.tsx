@@ -17,9 +17,7 @@ interface HomeProps {
   challengesCompleteds: number;
 }
 
-export default function Home(props: HomeProps) {
-
-  console.log(props)
+export default function Home(props: HomeProps) {  
 
   return (
     <ChallengesProvider 
