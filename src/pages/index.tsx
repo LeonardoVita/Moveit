@@ -2,6 +2,7 @@ import Head from "next/head"
 import {GetServerSideProps} from "next"
 import { CountdownProvider } from "../contexts/CountdownContext"
 import { ChallengesProvider } from "../contexts/ChallengesContext"
+import superagent from "superagent"
 
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
@@ -15,10 +16,13 @@ interface HomeProps {
   level: number; 
   currentExperience: number; 
   challengesCompleteds: number;
+  login: string,
+  avatar_url: string;
 }
 
-export default function Home(props: HomeProps) {  
 
+export default function Home(props: HomeProps) {  
+  
   return (
     <ChallengesProvider 
       level={props.level}
@@ -35,7 +39,7 @@ export default function Home(props: HomeProps) {
         <CountdownProvider>      
           <section>
             <div>
-              <Profile/>
+              <Profile login={props.login} avatar_url={props.avatar_url}/>
               <CompletedChallenges/>
               <Countdown />
             </div>
@@ -52,14 +56,25 @@ export default function Home(props: HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx)=> {
 
-  const {level, currentExperience, challengesCompleteds} = ctx.req.cookies;
+  const {token_type , access_token} = ctx.query
 
+  const user = await superagent
+    .get('https://api.github.com/user')
+    .set('Authorization', `${token_type} ${access_token}`)
+    .set('User-Agent', 'move.it-dev')
+    .catch((err) => {
+      console.log(err)      
+    })
+
+  const {level, currentExperience, challengesCompleteds} = ctx.req.cookies;
 
   return {
     props: {
       level: Number(level || 1), 
       currentExperience: Number(currentExperience || 0), 
       challengesCompleteds: Number(challengesCompleteds || 0),
+      login: user.body.login,
+      avatar_url: user.body.avatar_url
     }  
   }
 }

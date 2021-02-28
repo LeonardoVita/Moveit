@@ -1,8 +1,13 @@
 import { useState } from "react"
-import Link  from "next/link"
 import styles from "../styles/pages/login.module.css"
 
+
 export default function login() {
+  
+  // variavel de ambiente de desenvolvimento
+  const REDIRECT_URI = "http://localhost:3000/api/githubOAuth";
+  const CLIENT_ID =  "4540f209dfb0abcf0500";
+
   
   const [ login, setLogin] = useState("")
 
@@ -20,15 +25,15 @@ export default function login() {
             type="text" 
             name="login" 
             id="login" 
-            placeholder="Github User Name"
+            placeholder="Github User login"
             value={login} 
             onChange={(e)=> setLogin(e.target.value)}
           /> 
-          <Link href="/">      
-            <a>
-              <img src="/icons/right-arrow.svg" alt="seta para direita icone"/>
-            </a>
-          </Link> 
+               
+          <a href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&login=${login}`}
+          >
+            <img src="/icons/right-arrow.svg" alt="seta para direita icone"/>
+          </a>          
         </div>
       </div>
     </div>
