@@ -70,7 +70,7 @@ export function ChallengesProvider({ children, ...props } : ChallengesProviderPr
 
     setActiveChallenge(challenge);
 
-    // new Audio("/notification.mp3").play();
+    new Audio("/notification.mp3").play();
 
     // if(Notification.permission === "granted"){
     //   new Notification("Novo desafio", { 
