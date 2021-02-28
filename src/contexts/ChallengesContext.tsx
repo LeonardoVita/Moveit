@@ -43,7 +43,7 @@ export function ChallengesProvider({ children, ...props } : ChallengesProviderPr
   const experienceToNextLevel = Math.pow((level + 1) * 3 ,2) ; 
 
   useEffect(() => {
-    // Notification.requestPermission();
+    screen.width > 720 && Notification.requestPermission();
   }, [])
 
   useEffect(()=>{
@@ -72,11 +72,11 @@ export function ChallengesProvider({ children, ...props } : ChallengesProviderPr
 
     new Audio("/notification.mp3").play();
 
-    // if(Notification.permission === "granted"){
-    //   new Notification("Novo desafio", { 
-    //     body: `valendo ${challenge.amount}xp`
-    //   })
-    // }
+    if(Notification.permission === "granted" && screen.width > 720){
+      new Notification("Novo desafio", { 
+        body: `valendo ${challenge.amount}xp`
+      })
+    }
   }
 
   function resetChallenge(){
