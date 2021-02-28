@@ -2,6 +2,8 @@
 
 helping devs to stay healthy with periodic exercise
 
+See the project running on https://moveit-leonardovita.vercel.app 🚀🚀🚀
+
 <p align="center">
  <a href="https://www.linkedin.com/in/leonardo-vita-milanez-de-almeida-48b27a14a/" target="_blank">
    <img src="https://img.shields.io/badge/Linkedin--inactive?style=social&logo=Linkedin" alt="linkedin"/>
