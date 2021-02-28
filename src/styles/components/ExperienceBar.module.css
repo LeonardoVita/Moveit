@@ -1,6 +1,8 @@
 .experience-bar {
   display: flex;
   align-items: center;
+
+  margin-bottom: 40px;
 }
 
 .experience-bar span {
