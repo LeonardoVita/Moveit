@@ -7,7 +7,11 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="favicon.png" type="image/png"/>
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet"/>    
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet"/> 
+          <meta name="description" content="com o Move.it você se mantem saudavel realizando exercicios entre sua rotina de programação"/>
+          <meta name="keywords" content="Move.it moveit saúde programção "/>
+          <meta name="author" content="Leonardo Vita"/>  
+          <meta property="og:image" content="favicon.png"/>
         </Head> 
         <body>
           <Main />
