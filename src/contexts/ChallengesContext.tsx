@@ -33,12 +33,12 @@ export const ChallengesContext =  createContext({} as ChallengesContextData );
 
 export function ChallengesProvider({ children, ...props } : ChallengesProviderProps){
 
-  const [level, setLevel] = useState(props.level ?? 1);
-  const [currentExperience, setCurrentExperience] = useState(props.currentExperience ?? 0);
-  const [challengesCompleteds, setChallengesCompleteds] = useState(props.challengesCompleteds ?? 0);
+  const [level, setLevel] = useState(props.level);
+  const [currentExperience, setCurrentExperience] = useState(props.currentExperience);
+  const [challengesCompleteds, setChallengesCompleteds] = useState(props.challengesCompleteds);
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
   const [activeChallenge, setActiveChallenge] = useState(null);
-  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(true);
 
   const experienceToNextLevel = Math.pow((level + 1) * 3 ,2) ; 
 
@@ -105,16 +105,16 @@ export function ChallengesProvider({ children, ...props } : ChallengesProviderPr
   return (
     <ChallengesContext.Provider 
       value={{
-          level, 
-          currentExperience, 
-          challengesCompleteds,
-          activeChallenge,
-          experienceToNextLevel,
-          levelUp,
-          startNewChallenge,
-          resetChallenge,
-          completeChallenge,
-          closeLevelUpModal,}}
+        level, 
+        currentExperience, 
+        challengesCompleteds,
+        activeChallenge,
+        experienceToNextLevel,
+        levelUp,
+        startNewChallenge,
+        resetChallenge,
+        completeChallenge,
+        closeLevelUpModal,}}
     >
       { children }
 
