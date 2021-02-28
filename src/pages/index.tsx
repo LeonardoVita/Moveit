@@ -11,6 +11,7 @@ import Countdown from "../components/Countdown"
 import ChallengeBox from "../components/ChallengeBox";
 
 import styles from "../styles/pages/index.module.css"
+import { useEffect } from "react"
 
 interface HomeProps {
   level: number; 
@@ -22,6 +23,12 @@ interface HomeProps {
 
 
 export default function Home(props: HomeProps) {  
+
+  useEffect(()=>{
+    const url = window.location.href;
+    const newUrl = url.split("?token_type=");
+    window.history.pushState({}, null, newUrl[0]);
+  },[])
   
   return (
     <ChallengesProvider 
@@ -55,6 +62,8 @@ export default function Home(props: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx)=> {
+
+  
 
   const {token_type , access_token} = ctx.query
 

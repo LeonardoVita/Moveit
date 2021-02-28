@@ -9,7 +9,7 @@ export default function Profile({login, avatar_url}) {
     <div className={styles.profileContainer}>
       <img src={avatar_url ?? "/icons/user.svg"} alt="Leonardo Vita"/> 
       <div>
-        <strong>{login}</strong>  
+        <strong>{login ?? "Username"}</strong>  
         <p>
           <img src="icons/level.svg" alt="Level"/>
           Level {level}
