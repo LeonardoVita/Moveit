@@ -5,8 +5,12 @@ import styles from "../styles/pages/login.module.css"
 export default function login() {
   
   // variavel de ambiente de desenvolvimento
-  const REDIRECT_URI = "http://localhost:3000/api/githubOAuth";
-  const CLIENT_ID =  "4540f209dfb0abcf0500";
+  // const REDIRECT_URI = "http://localhost:3000/api/githubOAuth";
+  // const CLIENT_ID =  "4540f209dfb0abcf0500";
+
+  // variavel de produção
+  const REDIRECT_URI = "https://moveit-iota-eight.vercel.app/api/githubOAuth";
+  const CLIENT_ID =  "3a3e8d3ed5ebdbc0221e";
 
   
   const [ login, setLogin] = useState("")
