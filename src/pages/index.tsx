@@ -2,13 +2,15 @@ import Head from "next/head"
 import {GetServerSideProps} from "next"
 import { CountdownProvider } from "../contexts/CountdownContext"
 import { ChallengesProvider } from "../contexts/ChallengesContext"
-import Superagent from "superagent"
 
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
 import CompletedChallenges from "../components/CompletedChallenges";
 import Countdown from "../components/Countdown"
 import ChallengeBox from "../components/ChallengeBox";
+
+import { getSession} from 'next-auth/client'
+
 
 import styles from "../styles/pages/index.module.css"
 import { useEffect } from "react"
@@ -17,17 +19,8 @@ interface HomeProps {
   level: number; 
   currentExperience: number; 
   challengesCompleteds: number;
-  login: string,
-  avatar_url: string;
 }
 
-interface ResponseGithubProps {
-  body?: {
-    login: string;
-    avatar_url: string;
-  };
-  props?: {};
-}
 
 export default function Home(props: HomeProps) {  
 
@@ -51,8 +44,8 @@ export default function Home(props: HomeProps) {
 
         <CountdownProvider>      
           <section>
-            <div>
-              <Profile login={props.login} avatar_url={props.avatar_url}/>
+            <div>              
+              <Profile/>
               <CompletedChallenges/>
               <Countdown />
             </div>
@@ -69,37 +62,26 @@ export default function Home(props: HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async ({req,res})=> {  
 
-  const {
-    level, 
-    currentExperience, 
-    challengesCompleteds, 
-    token_type , 
-    access_token
-  } = req.cookies;
-  
-  const responsegithub: ResponseGithubProps  = await Superagent
-  .get('https://api.github.com/user')
-  .set('Authorization', `${token_type} ${access_token}`)
-  .set('User-Agent', 'move.it-dev')
-  .catch((err) => {
+  const {level, currentExperience, challengesCompleteds} = req.cookies;  
 
-    console.log({ error : err.message }) ;   
-    res.writeHead(307,{location: "/login"});
+  const session = await getSession({req})
+
+  if (!session) {    
+    res.writeHead(302, {
+      Location: "/login",
+    });
+
     res.end();
-
-    return{
-      props: {}
-    }
-
-  })
+    return {
+      props: {},
+    };
+  }
 
   return {
     props: {
       level: Number(level || 1), 
       currentExperience: Number(currentExperience || 0), 
-      challengesCompleteds: Number(challengesCompleteds || 0),
-      login: responsegithub.body.login,
-      avatar_url: responsegithub.body.avatar_url
+      challengesCompleteds: Number(challengesCompleteds || 0)
     }  
   }
 }

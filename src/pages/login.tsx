@@ -1,18 +1,10 @@
 import { useState } from "react"
+import { getSession, signIn} from "next-auth/client";
+
 import styles from "../styles/pages/login.module.css"
 
 
-export default function login() {
-  
-  // variavel de ambiente de desenvolvimento
-  const REDIRECT_URI = "http://localhost:3000/api/githubOAuth";
-  const CLIENT_ID =  "4540f209dfb0abcf0500";
-
-  // variavel de produção
-  // const REDIRECT_URI = "https://moveit-iota-eight.vercel.app/api/githubOAuth";
-  // const CLIENT_ID =  "3a3e8d3ed5ebdbc0221e";
-
-  
+export default function login() {  
   const [ login, setLogin] = useState("")
 
   return (
@@ -34,12 +26,35 @@ export default function login() {
             onChange={(e)=> setLogin(e.target.value)}
           /> 
                
-          <a href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&login=${login}`}
+          <button
+            onClick={(): Promise<void> =>
+              signIn("github", {
+                callbackUrl: "https://localhost:3000",
+              })
+            }
           >
             <img src="/icons/right-arrow.svg" alt="seta para direita icone"/>
-          </a>          
+          </button>          
         </div>
       </div>
     </div>
   )
 }
+
+
+export const getServerSideProps = async ({ req, res }) => {
+
+  const session = await getSession({ req });
+
+  if (session && req) {
+    res.writeHead(302, {
+      Location: "/",
+    });
+
+    res.end();    
+  }
+
+  return {
+    props: {},
+  };
+};

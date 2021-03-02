@@ -79,7 +79,7 @@
   color: var(--white);
 }
 
-.login-input-container > a {
+.login-input-container > button {
   width: 4rem;
   background-color: var(--green);
   border: none;
@@ -89,7 +89,7 @@
   justify-content: center;
 }
 
-.login-input-container > a:hover {
+.login-input-container > button:hover {
   background-color: var(--blue-dark);
 }
 
