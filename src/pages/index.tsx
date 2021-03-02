@@ -2,7 +2,7 @@ import Head from "next/head"
 import {GetServerSideProps} from "next"
 import { CountdownProvider } from "../contexts/CountdownContext"
 import { ChallengesProvider } from "../contexts/ChallengesContext"
-import superagent from "superagent"
+import Superagent from "superagent"
 
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
@@ -21,6 +21,13 @@ interface HomeProps {
   avatar_url: string;
 }
 
+interface ResponseGithubProps {
+  body?: {
+    login: string;
+    avatar_url: string;
+  };
+  props?: {};
+}
 
 export default function Home(props: HomeProps) {  
 
@@ -35,7 +42,6 @@ export default function Home(props: HomeProps) {
       level={props.level}
       currentExperience={props.currentExperience}
       challengesCompleteds={props.challengesCompleteds}
-
     >
       <div className={styles.container}>   
         <Head>
@@ -61,29 +67,39 @@ export default function Home(props: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx)=> {
+export const getServerSideProps: GetServerSideProps = async ({req,res})=> {  
 
+  const {
+    level, 
+    currentExperience, 
+    challengesCompleteds, 
+    token_type , 
+    access_token
+  } = req.cookies;
   
+  const responsegithub: ResponseGithubProps  = await Superagent
+  .get('https://api.github.com/user')
+  .set('Authorization', `${token_type} ${access_token}`)
+  .set('User-Agent', 'move.it-dev')
+  .catch((err) => {
 
-  const {token_type , access_token} = ctx.query
+    console.log({ error : err.message }) ;   
+    res.writeHead(307,{location: "/login"});
+    res.end();
 
-  const user = await superagent
-    .get('https://api.github.com/user')
-    .set('Authorization', `${token_type} ${access_token}`)
-    .set('User-Agent', 'move.it-dev')
-    .catch((err) => {
-      console.log(err)      
-    })
+    return{
+      props: {}
+    }
 
-  const {level, currentExperience, challengesCompleteds} = ctx.req.cookies;
+  })
 
   return {
     props: {
       level: Number(level || 1), 
       currentExperience: Number(currentExperience || 0), 
       challengesCompleteds: Number(challengesCompleteds || 0),
-      login: user.body.login,
-      avatar_url: user.body.avatar_url
+      login: responsegithub.body.login,
+      avatar_url: responsegithub.body.avatar_url
     }  
   }
 }
