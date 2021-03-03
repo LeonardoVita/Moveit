@@ -14,6 +14,7 @@ See the project running on https://moveit-leonardovita.vercel.app 🚀🚀🚀
  <img src="https://img.shields.io/badge/Reactjs-100%25-informational" alt="reactjs 100%"/>
 </p>
 
+![image](https://user-images.githubusercontent.com/43863949/109733765-87e65300-7b9e-11eb-9e33-07c5ef02eed5.png)
 ![image](https://user-images.githubusercontent.com/43863949/109092809-03a35400-76f6-11eb-9149-4d2a112203e6.png)
 
 This is a [Next.js](https://nextjs.org/) project
@@ -38,6 +39,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -  [Typescript](https://www.typescriptlang.org)
 -  [Next.js](https://nextjs.org) 
 -  [Context Api](https://pt-br.reactjs.org/docs/context.html) 
+-  [next-auth](https://next-auth.js.org) 
   
 ## :memo: License
 This is a Rocketseat Next Level Weak (NLW) project 
