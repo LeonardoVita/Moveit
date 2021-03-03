@@ -1,12 +1,11 @@
 .login-container-background {
   height: 100vh;
   width: 100%;
-
   display: flex;
+
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-
   padding: 10px 12vw;
 
   background-color: var(--blue);
@@ -18,8 +17,6 @@
 
 .login-container {
   display: flex;
-  /* background-color: #888; */
-
   flex-direction: column;
 }
 
@@ -38,7 +35,6 @@
 .github-span-container {
   display: flex;
   align-items: center;
-
   margin-bottom: 2rem;
 }
 
@@ -50,7 +46,6 @@
   color: var(--text-highlight);
   font-weight: 400;
   font-size: 1.2rem;
-
   width: 60%;
 }
 
@@ -58,7 +53,6 @@
   display: flex;
   height: 4rem;
   width: 100%;
-  /* background-color: #ddd; */
 }
 
 .login-input-container > input[type="text"] {

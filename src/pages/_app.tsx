@@ -1,5 +1,5 @@
-import { Provider } from 'next-auth/client'
-import '../styles/global.css';
+import { Provider } from "next-auth/client"
+import "../styles/global.css";
 
 function MyApp({ Component, pageProps }) {
   return (     
@@ -9,6 +9,6 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default MyApp;
 
 

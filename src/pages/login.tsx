@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
 import { getSession, signIn} from "next-auth/client";
 
-import styles from "../styles/pages/login.module.css"
+import styles from "../styles/pages/login.module.css";
 
 
 export default function login() {  
-  const [ login, setLogin] = useState("")
+  const [ login, setLogin] = useState("");
 
   return (
     <div className={styles["login-container-background"]}>
@@ -23,7 +23,7 @@ export default function login() {
             id="login" 
             placeholder="Github User login"
             value={login} 
-            onChange={(e)=> setLogin(e.target.value)}
+            onChange={(e) => setLogin(e.target.value)}
           /> 
                
           <button
@@ -38,7 +38,7 @@ export default function login() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 

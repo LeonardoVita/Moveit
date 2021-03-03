@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ChallengesContext } from "../contexts/ChallengesContext";
-import { getSession} from "next-auth/client"
-import styles from "../styles/components/Profile.module.css"
+import { getSession} from "next-auth/client";
+import styles from "../styles/components/Profile.module.css";
 
 export default function Profile() {
 
@@ -9,14 +9,14 @@ export default function Profile() {
   const [user, setUser] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   
-  useEffect(()=>{
+  useEffect(() => {
     async function getData(){
-      const session = await getSession()
-      setUser(session.user.name)
-      setAvatarUrl(session.user.image)
+      const session = await getSession();
+      setUser(session.user.name);
+      setAvatarUrl(session.user.image);
     }
     getData();
-  },[])
+  },[]);
   
   
   return (
