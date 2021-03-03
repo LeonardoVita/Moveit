@@ -1,6 +1,6 @@
-import SideBar from "../components/SideBar"
+import SideBar from "../components/SideBar";
 import Head from "next/head";
-import styles from "../styles/pages/leaderboard.module.css"
+import styles from "../styles/pages/leaderboard.module.css";
 
 export default function Leaderboard() {
   return (

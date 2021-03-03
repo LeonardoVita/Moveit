@@ -1,6 +1,7 @@
-import styles from '../styles/components/SideBar.module.css'
-import Link from "next/link"
-import { useRouter } from "next/router"
+import styles from "../styles/components/SideBar.module.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { signOut } from "next-auth/client"
 
 export default function SideBar() {
   const router = useRouter();
@@ -9,9 +10,9 @@ export default function SideBar() {
 
     if(route === router.pathname){
       return styles.active  
-    } else  return ""    
+    } else  return "";  
 
-  }
+  } 
 
   return (
     <div className={styles["sidebar-container"]}>
@@ -44,7 +45,7 @@ export default function SideBar() {
         </Link>
       </nav>
 
-      <button className={styles["sidebar-logout"]}>
+      <button className={styles["sidebar-logout"]} onClick={() => signOut()}>
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">          
           <path fill-rule="evenodd" clip-rule="evenodd" d="M27.1998 27.2C28.0835 27.2 28.7998 26.4836 28.7998 25.6L28.7998 6.39995C28.7998 5.51627 28.0835 4.79995 27.1998 4.79995C26.3162 4.79995 25.5998 5.51627 25.5998 6.39995L25.5998 25.6C25.5998 26.4836 26.3162 27.2 27.1998 27.2ZM10.7312 12.3313C11.356 11.7065 11.356 10.6934 10.7312 10.0686C10.1064 9.44379 9.09325 9.44379 8.46845 10.0686L3.66845 14.8686C3.36845 15.1686 3.19981 15.5756 3.19981 16C3.19981 16.4243 3.36845 16.8313 3.66845 17.1313L8.46845 21.9313C9.09325 22.5562 10.1064 22.5562 10.7312 21.9313C11.356 21.3065 11.356 20.2934 10.7312 19.6686L8.66253 17.6H20.7998C21.6835 17.6 22.3998 16.8836 22.3998 16C22.3998 15.1163 21.6835 14.4 20.7998 14.4H8.66253L10.7312 12.3313Z" fill="#666666" opacity="0.5"/>          
         </svg> 
