@@ -1,7 +1,8 @@
-import Head from "next/head"
-import {GetServerSideProps} from "next"
-import { CountdownProvider } from "../contexts/CountdownContext"
-import { ChallengesProvider } from "../contexts/ChallengesContext"
+import {GetServerSideProps} from "next";
+import { useEffect } from "react";
+import Head from "next/head";
+import { CountdownProvider } from "../contexts/CountdownContext";
+import { ChallengesProvider } from "../contexts/ChallengesContext";
 
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
@@ -9,7 +10,9 @@ import CompletedChallenges from "../components/CompletedChallenges";
 import Countdown from "../components/Countdown"
 import ChallengeBox from "../components/ChallengeBox";
 
-import styles from "../styles/pages/index.module.css"
+import { getSession} from "next-auth/client";
+
+import styles from "../styles/pages/index.module.css";
 
 interface HomeProps {
   level: number; 
@@ -17,14 +20,20 @@ interface HomeProps {
   challengesCompleteds: number;
 }
 
+
 export default function Home(props: HomeProps) {  
 
+  useEffect(() => {
+    const url = window.location.href;
+    const newUrl = url.split("?token_type=");
+    window.history.pushState({}, null, newUrl[0]);
+  },[]);
+  
   return (
     <ChallengesProvider 
       level={props.level}
       currentExperience={props.currentExperience}
       challengesCompleteds={props.challengesCompleteds}
-
     >
       <div className={styles.container}>   
         <Head>
@@ -34,7 +43,7 @@ export default function Home(props: HomeProps) {
 
         <CountdownProvider>      
           <section>
-            <div>
+            <div>              
               <Profile/>
               <CompletedChallenges/>
               <Countdown />
@@ -50,16 +59,28 @@ export default function Home(props: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx)=> {
+export const getServerSideProps: GetServerSideProps = async ({req,res}) => {  
 
-  const {level, currentExperience, challengesCompleteds} = ctx.req.cookies;
+  const {level, currentExperience, challengesCompleteds} = req.cookies;  
 
+  const session = await getSession({req});
+
+  if (!session) {    
+    res.writeHead(302, {
+      Location: "/login",
+    });
+
+    res.end();
+    return {
+      props: {},
+    };
+  }
 
   return {
     props: {
       level: Number(level || 1), 
       currentExperience: Number(currentExperience || 0), 
-      challengesCompleteds: Number(challengesCompleteds || 0),
+      challengesCompleteds: Number(challengesCompleteds || 0)
     }  
   }
 }

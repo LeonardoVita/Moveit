@@ -1,0 +1,93 @@
+.login-container-background {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px 12vw;
+
+  background-color: var(--blue);
+  background-image: url("/icons/login-background.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 45%;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container > img {
+  margin-bottom: 6rem;
+  width: 80%;
+}
+
+.login-container > strong {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.github-span-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.github-span-container > img {
+  margin-right: 1rem;
+}
+
+.github-span-container > span {
+  color: var(--text-highlight);
+  font-weight: 400;
+  font-size: 1.2rem;
+  width: 60%;
+}
+
+.login-input-container {
+  display: flex;
+  height: 4rem;
+  width: 100%;
+}
+
+.login-input-container > input[type="text"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgba(57, 65, 150, 1),
+    rgba(73, 83, 184, 0.2)
+  );
+
+  padding-left: 1.2rem;
+  color: var(--white);
+}
+
+.login-input-container > input[type="text"]::placeholder {
+  color: var(--white);
+}
+
+.login-input-container > button {
+  width: 4rem;
+  background-color: var(--green);
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-input-container > button:hover {
+  background-color: var(--blue-dark);
+}
+
+.login-input-container > button > img {
+  width: 33%;
+  height: auto;
+}

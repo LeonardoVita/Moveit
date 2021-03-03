@@ -1,15 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ChallengesContext } from "../contexts/ChallengesContext";
-import styles from "../styles/components/Profile.module.css"
+import { getSession} from "next-auth/client";
+import styles from "../styles/components/Profile.module.css";
 
 export default function Profile() {
 
-  const {level} = useContext(ChallengesContext); 
+  const {level} = useContext(ChallengesContext);
+  const [user, setUser] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
+  
+  useEffect(() => {
+    async function getData(){
+      const session = await getSession();
+      setUser(session.user.name);
+      setAvatarUrl(session.user.image);
+    }
+    getData();
+  },[]);
+  
+  
   return (
     <div className={styles.profileContainer}>
-      <img src="https://avatars.githubusercontent.com/u/43863949?s=400&u=5242826dc1ec134d6f2d57ba5857b368599ad9ab&v=4" alt="Leonardo Vita"/> 
+      <img src={avatarUrl || "/icons/user.svg"} alt="Leonardo Vita"/> 
       <div>
-        <strong>Leonardo Vita</strong>  
+        <strong>{user || "Username"}</strong>  
         <p>
           <img src="icons/level.svg" alt="Level"/>
           Level {level}
