@@ -4,7 +4,7 @@ import Head from "next/head";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
 
-import SideBar from "../components/SideBar"
+import SideBar from "../components/SideBar";
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
 import CompletedChallenges from "../components/CompletedChallenges";
