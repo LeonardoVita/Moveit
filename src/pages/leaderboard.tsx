@@ -13,5 +13,5 @@ export default function Leaderboard() {
         <p>Leaderboard page</p>
       </div>
     </div>
-  )
+  );
 }

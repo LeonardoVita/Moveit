@@ -5,14 +5,14 @@ import { useRouter } from "next/router";
 import { signOut , useSession} from "next-auth/client";
 
 export default function SideBar() {
-  const [isActiveModalLogout, setIsActiveModalLogout] = useState(false)
-  const [session, loading] = useSession()
+  const [isActiveModalLogout, setIsActiveModalLogout] = useState(false);
+  const [session, loading] = useSession();
   const router = useRouter();
 
   function isActive(route){
 
     if(route === router.pathname){
-      return styles.active  
+      return styles.active; 
     } else  return "";  
 
   } 
@@ -20,7 +20,7 @@ export default function SideBar() {
   function handleClickModal(e){
     // console.log(e.target.classList[0] , styles.overlay)
     if(e.target.classList[0] === styles.overlay){
-      setIsActiveModalLogout(false)
+      setIsActiveModalLogout(false);
     }
   } 
 
@@ -78,5 +78,5 @@ export default function SideBar() {
         )   
       }
     </div>
-  )
+  );
 }
