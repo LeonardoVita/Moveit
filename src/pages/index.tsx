@@ -4,10 +4,11 @@ import Head from "next/head";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
 
+import SideBar from "../components/SideBar";
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
 import CompletedChallenges from "../components/CompletedChallenges";
-import Countdown from "../components/Countdown"
+import Countdown from "../components/Countdown";
 import ChallengeBox from "../components/ChallengeBox";
 
 import { getSession} from "next-auth/client";
@@ -20,9 +21,7 @@ interface HomeProps {
   challengesCompleteds: number;
 }
 
-
-export default function Home(props: HomeProps) {  
-
+export default function Home(props: HomeProps) { 
   useEffect(() => {
     const url = window.location.href;
     const newUrl = url.split("?token_type=");
@@ -35,26 +34,28 @@ export default function Home(props: HomeProps) {
       currentExperience={props.currentExperience}
       challengesCompleteds={props.challengesCompleteds}
     >
-      <div className={styles.container}>   
+      <div className={styles.wrap}>
         <Head>
           <title>Inicio | Move IT!</title>
-        </Head>   
-        <ExperienceBar/>
-
-        <CountdownProvider>      
-          <section>
-            <div>              
-              <Profile/>
-              <CompletedChallenges/>
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
-        
-      </div>  
+        </Head>  
+        <SideBar/>
+        <div className={styles.container}>   
+          <ExperienceBar/>
+          <CountdownProvider>      
+            <section>
+              <div>              
+                <Profile/>
+                <CompletedChallenges/>
+                <Countdown />
+              </div>
+              <div>
+                <ChallengeBox />
+              </div>
+            </section>
+          </CountdownProvider>        
+        </div>
+      </div> 
+       
     </ChallengesProvider>
   )
 }

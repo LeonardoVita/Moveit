@@ -1,0 +1,189 @@
+.sidebar-container {
+  min-height: 100vh;
+  width: 6.5rem;
+  padding: 1rem 0;
+
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-logo {
+  padding: 1rem;
+}
+
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-nav-link {
+  position: relative;
+  padding: 1rem;
+  margin: 0.5rem 0 0.5rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-nav-link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  border-width: 0 0 0 5px;
+  border-style: solid;
+  border-color: var(--blue);
+  border-radius: 0 5px 5px 0;
+}
+
+.sidebar-nav-link.active svg path {
+  opacity: 1;
+  stroke: var(--blue-dark);
+}
+
+.sidebar-nav-link:hover svg path {
+  opacity: 1;
+}
+
+.sidebar-logout {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+
+  font-size: 0;
+  transition: opacity 0.2;
+}
+
+.sidebar-logout:hover svg path {
+  opacity: 1;
+  fill: var(--blue-dark);
+}
+
+/* MODAL LOGOUT  */
+
+.overlay {
+  background-color: rgba(242, 243, 245, 0.8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-modal-container {
+  background-color: var(--white);
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem 3rem;
+  border-radius: 5px;
+  box-shadow: 0 0 60px rgb(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+}
+
+.logout-modal-container header {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+
+.logout-buttom-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logout-buttom-container button {
+  background-color: transparent;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+
+  font-size: 1.2rem;
+}
+
+.logout-modal-container > button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background: transparent;
+  border: 0;
+  font-size: 0;
+}
+
+.logout-buttom-container button:first-child {
+  background-color: rgba(77, 214, 43, 0.2);
+  color: var(--green);
+}
+
+.logout-buttom-container button:last-child {
+  background-color: rgba(232, 63, 91, 0.2);
+  color: var(--red);
+}
+
+@media (max-width: 840px) {
+  .sidebar-container {
+    min-height: auto;
+    min-width: 100vw;
+    height: 5.5rem;
+    padding: 0 1rem;
+
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sidebar-nav-link {
+    position: relative;
+    padding: 1rem;
+    margin: 0 0.5rem 0 0.5rem;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar-nav-link.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    border-width: 5px 0 0;
+    border-style: solid;
+    border-color: var(--blue);
+    border-radius: 0 5px 5px 0;
+  }
+}
