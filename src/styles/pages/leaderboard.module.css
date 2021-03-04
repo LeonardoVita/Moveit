@@ -12,3 +12,9 @@
 
   font-size: 4rem;
 }
+
+@media (max-width: 840px) {
+  .leaderboard-wrap {
+    flex-direction: column;
+  }
+}

@@ -22,3 +22,9 @@
 
   padding-bottom: 20px;
 }
+
+@media (max-width: 840px) {
+  .wrap {
+    flex-direction: column;
+  }
+}
