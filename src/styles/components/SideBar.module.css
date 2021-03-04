@@ -70,3 +70,69 @@
   opacity: 1;
   fill: var(--blue-dark);
 }
+
+/* MODAL LOGOUT  */
+
+.overlay {
+  background-color: rgba(242, 243, 245, 0.8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-modal-container {
+  background-color: var(--white);
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem 3rem;
+  border-radius: 5px;
+  box-shadow: 0 0 60px rgb(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+}
+
+.logout-modal-container header {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+
+.logout-buttom-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logout-buttom-container button {
+  background-color: transparent;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+
+  font-size: 1.2rem;
+}
+
+.logout-buttom-container button:first-child {
+  background-color: rgba(77, 214, 43, 0.2);
+  color: var(--green);
+}
+
+.logout-buttom-container button:last-child {
+  background-color: rgba(232, 63, 91, 0.2);
+  color: var(--red);
+}
+
+.logout-modal-container > button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background: transparent;
+  border: 0;
+  font-size: 0;
+}
