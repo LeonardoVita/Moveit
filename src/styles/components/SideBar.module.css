@@ -118,6 +118,15 @@
   font-size: 1.2rem;
 }
 
+.logout-modal-container > button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background: transparent;
+  border: 0;
+  font-size: 0;
+}
+
 .logout-buttom-container button:first-child {
   background-color: rgba(77, 214, 43, 0.2);
   color: var(--green);
@@ -126,15 +135,6 @@
 .logout-buttom-container button:last-child {
   background-color: rgba(232, 63, 91, 0.2);
   color: var(--red);
-}
-
-.logout-modal-container > button {
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
-  background: transparent;
-  border: 0;
-  font-size: 0;
 }
 
 @media (max-width: 840px) {
@@ -154,6 +154,7 @@
     flex-direction: row;
     align-items: center;
   }
+
   .sidebar-nav {
     flex: 1;
     display: flex;

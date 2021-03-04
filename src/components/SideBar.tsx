@@ -13,7 +13,10 @@ export default function SideBar() {
 
     if(route === router.pathname){
       return styles.active; 
-    } else  return "";  
+    } else {
+      return "";  
+    } 
+      
 
   } 
 

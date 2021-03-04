@@ -8,7 +8,7 @@ import SideBar from "../components/SideBar"
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
 import CompletedChallenges from "../components/CompletedChallenges";
-import Countdown from "../components/Countdown"
+import Countdown from "../components/Countdown";
 import ChallengeBox from "../components/ChallengeBox";
 
 import { getSession} from "next-auth/client";
