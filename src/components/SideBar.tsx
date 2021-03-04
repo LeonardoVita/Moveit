@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { signOut , useSession} from "next-auth/client";
 
 export default function SideBar() {
-  const [isActiveModalLogout, setIsActiveModalLogout] = useState()
+  const [isActiveModalLogout, setIsActiveModalLogout] = useState(false)
   const [session, loading] = useSession()
   const router = useRouter();
 
