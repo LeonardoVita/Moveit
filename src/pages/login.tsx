@@ -28,9 +28,7 @@ export default function login() {
                
           <button
             onClick={(): Promise<void> =>
-              signIn("github", {
-                callbackUrl: "https://localhost:3000",
-              })
+              signIn("github")
             }
           >
             <img src="/icons/right-arrow.svg" alt="seta para direita icone"/>
