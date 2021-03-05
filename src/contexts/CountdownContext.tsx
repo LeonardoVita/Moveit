@@ -7,6 +7,7 @@ interface CountdownProviderProps {
 } 
 
 interface CountdownContextData {
+  timer: number,
   minutes: number,
   seconds: number,
   hasFinished: boolean,
@@ -59,6 +60,7 @@ export function CountdownProvider({ children } : CountdownProviderProps){
   return(
     <CountdownContext.Provider 
       value={{
+        timer,
         minutes,
         seconds,
         hasFinished,
