@@ -14,7 +14,7 @@ See the project running on https://moveit-leonardovita.vercel.app 🚀🚀🚀
  <img src="https://img.shields.io/badge/Reactjs-100%25-informational" alt="reactjs 100%"/>
 </p>
 
-![moveit](https://user-images.githubusercontent.com/43863949/110218989-5b328400-7e9b-11eb-9875-3a50f2726868.gif)
+![moveit](https://user-images.githubusercontent.com/43863949/110219040-aba9e180-7e9b-11eb-958d-46036e2a10a9.gif)
 ![image](https://user-images.githubusercontent.com/43863949/110218816-79e44b00-7e9a-11eb-9536-031dd3ec9a11.png)
 ![image](https://user-images.githubusercontent.com/43863949/110218839-9c766400-7e9a-11eb-8fc6-c7765261b973.png)
 
