@@ -3,8 +3,10 @@ import { ChallengesContext } from "../contexts/ChallengesContext";
 
 import styles from "../styles/components/ExperienceBar.module.css";
 
+let experienceTimeout: NodeJS.Timeout;
+
 export default function ExperienceBar() {  
-  const { currentExperience : ctxCurrentExperience, experienceToNextLevel, level } = useContext(ChallengesContext);  
+  const { currentExperience : ctxCurrentExperience, experienceToNextLevel, level, levelUp, setCtxCurrentExperience } = useContext(ChallengesContext);  
 
   const [currentExperience, setCurrentExperience] = useState(ctxCurrentExperience);
 
@@ -16,10 +18,16 @@ export default function ExperienceBar() {
 
   useEffect(() => {
     if(currentExperience < ctxCurrentExperience){
-      setTimeout(()=>{        
+      experienceTimeout = setTimeout(()=>{        
         setCurrentExperience(currentExperience + 1);
       },10);
     } 
+
+    if(currentExperience >= experienceToNextLevel){      
+      clearTimeout(experienceTimeout);
+      setCtxCurrentExperience(ctxCurrentExperience - experienceToNextLevel);
+      levelUp();
+    }
     
   },[currentExperience,ctxCurrentExperience])
 
