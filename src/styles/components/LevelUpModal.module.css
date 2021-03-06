@@ -20,6 +20,19 @@
   box-shadow: 0 0 60px rgb(0, 0, 0, 0.05);
   text-align: center;
   position: relative;
+
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: anime 0.2s forwards;
+}
+
+@keyframes anime {
+  from {
+  }
+  to {
+    opacity: 1;
+    transform: initial;
+  }
 }
 
 .levelup-modal-container header {
