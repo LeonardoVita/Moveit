@@ -27,8 +27,6 @@
 }
 
 @keyframes anime {
-  from {
-  }
   to {
     opacity: 1;
     transform: initial;

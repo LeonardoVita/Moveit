@@ -13,12 +13,12 @@ export default function ExperienceBar() {
   const percentToNextLevel = Math.round(currentExperience * 100) / experienceToNextLevel;    
 
   useEffect(() => {
-    setCurrentExperience(ctxCurrentExperience)  
-  },[level])
+    setCurrentExperience(ctxCurrentExperience);
+  },[level]);
 
   useEffect(() => {
     if(currentExperience < ctxCurrentExperience){
-      experienceTimeout = setTimeout(()=>{        
+      experienceTimeout = setTimeout(() => {        
         setCurrentExperience(currentExperience + 1);
       },10);
     } 
@@ -29,7 +29,7 @@ export default function ExperienceBar() {
       levelUp();
     }
     
-  },[currentExperience,ctxCurrentExperience])
+  },[currentExperience,ctxCurrentExperience]);
 
   return (
     <header className={styles["experience-bar"]}>
