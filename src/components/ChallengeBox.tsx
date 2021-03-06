@@ -19,18 +19,19 @@ export default function ChallengeBox() {
     resetCountDown();      
   }
 
-  return (
+  return (    
     <div className={styles["challengebox-container"]}>
       {
         activeChallenge ? (
-          <div className={styles["challenge-active"]}>
-            <header>Ganhe {activeChallenge.amount } xp</header> 
-            <main>
-              <img src={`icons/${activeChallenge.type}.svg`} alt="body"/>
-              <strong>Novo desafio</strong>
-              <p>{ activeChallenge.description }</p>
-            </main>  
-
+          <div className={styles["challenge-active-wrap"]}>
+            <div className={styles["challenge-active"]}>
+              <header>Ganhe {activeChallenge.amount } xp</header> 
+              <main>
+                <img src={`icons/${activeChallenge.type}.svg`} alt="body"/>
+                <strong>Novo desafio</strong>
+                <p>{ activeChallenge.description }</p>
+              </main>  
+            </div>
             <footer>
 
               <button 

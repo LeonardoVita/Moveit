@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from "react"
-import Cookies from "js-cookie"
-import challenges from "../../challenges.json"
+import { createContext, ReactNode, useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import challenges from "../../challenges.json";
 import LevelUpModal from "../components/LevelUpModal";
 
 interface Challenge {
@@ -19,7 +19,8 @@ interface ChallengesContextData {
   startNewChallenge: () => void;
   resetChallenge: () => void;
   completeChallenge: () => void;
-  closeLevelUpModal: ()=> void;
+  closeLevelUpModal: () => void;
+  setCtxCurrentExperience: (number) => void;
 } 
 
 interface ChallengesProviderProps {
@@ -34,7 +35,7 @@ export const ChallengesContext =  createContext({} as ChallengesContextData );
 export function ChallengesProvider({ children, ...props } : ChallengesProviderProps){
 
   const [level, setLevel] = useState(props.level);
-  const [currentExperience, setCurrentExperience] = useState(props.currentExperience);
+  const [currentExperience, setCtxCurrentExperience] = useState(props.currentExperience);
   const [challengesCompleteds, setChallengesCompleteds] = useState(props.challengesCompleteds);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
@@ -90,14 +91,14 @@ export function ChallengesProvider({ children, ...props } : ChallengesProviderPr
 
     const { amount } = activeChallenge;
 
-    let finalExperience = currentExperience + amount;
+    const finalExperience = currentExperience + amount;
 
-    if(finalExperience >= experienceToNextLevel){
-      finalExperience = finalExperience - experienceToNextLevel;
-      levelUp();
-    }
+    // if(finalExperience >= experienceToNextLevel){      
+    //   finalExperience = finalExperience - experienceToNextLevel;
+    //   levelUp();
+    // }
 
-    setCurrentExperience(finalExperience);
+    setCtxCurrentExperience(finalExperience);
     setActiveChallenge(null);
     setChallengesCompleteds(challengesCompleteds + 1);
   }
@@ -114,7 +115,8 @@ export function ChallengesProvider({ children, ...props } : ChallengesProviderPr
         startNewChallenge,
         resetChallenge,
         completeChallenge,
-        closeLevelUpModal,}}
+        closeLevelUpModal,
+        setCtxCurrentExperience,}}
     >
       { children }
 
