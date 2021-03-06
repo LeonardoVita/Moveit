@@ -2,9 +2,7 @@ import { getSession, signIn} from "next-auth/client";
 
 import styles from "../styles/pages/login.module.css";
 
-
 export default function login() {  
-
   return (
     <div className={styles["login-container-background"]}>
       <div className={styles["login-container"]}>

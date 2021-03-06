@@ -96,8 +96,6 @@
 
   font-size: 1.5rem;
   font-weight: 600;
-
-  transition: filter 0.2s;
 }
 
 .challenge-active-wrap > footer > button.challenge-failed-button {
@@ -114,6 +112,12 @@
   background-color: #d2ffc6;
 }
 
-.challenge-active-wrap > footer > button:hover {
-  filter: brightness(0.9);
+.challenge-active-wrap > footer > button.challenge-failed-button:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.challenge-active-wrap > footer > button.challenge-completed-button:hover {
+  background-color: var(--green);
+  color: var(--white);
 }
