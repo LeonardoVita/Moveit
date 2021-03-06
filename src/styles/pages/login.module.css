@@ -32,31 +32,13 @@
   margin-bottom: 1rem;
 }
 
-.github-span-container {
+.github-button {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
-}
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 80%;
 
-.github-span-container > img {
-  margin-right: 1rem;
-}
-
-.github-span-container > span {
-  color: var(--text-highlight);
-  font-weight: 400;
-  font-size: 1.2rem;
-  width: 60%;
-}
-
-.login-input-container {
-  display: flex;
-  height: 4rem;
-  width: 100%;
-}
-
-.login-input-container > input[type="text"] {
-  flex: 1;
   border: none;
   background: transparent;
   background-image: linear-gradient(
@@ -64,30 +46,19 @@
     rgba(57, 65, 150, 1),
     rgba(73, 83, 184, 0.2)
   );
+}
 
-  padding-left: 1.2rem;
+.github-button:hover {
+  outline: 2px solid var(--title);
+}
+
+.github-button > img {
+  margin-right: 3rem;
+}
+
+.github-button > span {
   color: var(--white);
-}
-
-.login-input-container > input[type="text"]::placeholder {
-  color: var(--white);
-}
-
-.login-input-container > button {
-  width: 4rem;
-  background-color: var(--green);
-  border: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-input-container > button:hover {
-  background-color: var(--blue-dark);
-}
-
-.login-input-container > button > img {
-  width: 33%;
-  height: auto;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-align: start;
 }
